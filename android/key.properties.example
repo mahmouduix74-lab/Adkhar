@@ -1,0 +1,5 @@
+# Copy to android/key.properties and fill in. Never commit the real file.
+storePassword=
+keyPassword=
+keyAlias=upload
+storeFile=/absolute/path/to/samt-upload-key.jks
