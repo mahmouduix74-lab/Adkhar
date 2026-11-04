@@ -28,15 +28,9 @@ jobs:
 
       - run: flutter pub get
 
-      # quran 1.3.1 imports three translation files with different letter
-      # case than the files it ships. macOS ignores case; Linux does not.
-      - name: Work around quran package file name case on Linux
-        run: |
-          ROOT=$(python3 -c "import json; print(next(p['rootUri'] for p in json.load(open('.dart_tool/package_config.json'))['packages'] if p['name'] == 'quran').removeprefix('file://'))")
-          cd "$ROOT/lib/translations"
-          ln -sf en_clearquran.dart en_clearQuran.dart
-          ln -sf fr_hamidullah.dart fr_Hamidullah.dart
-          ln -sf fa_husseindari.dart fa_husseinDari.dart
+      # quran 1.3.1 file names differ in letter case from its imports;
+      # see tool/fix_quran_case.sh.
+      - run: bash tool/fix_quran_case.sh
 
       - run: flutter test
 
