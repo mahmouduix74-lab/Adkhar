@@ -66,3 +66,6 @@ android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
 
 # Generated icon master
 tool/icon-1024.png
+
+# Flutter iOS ephemeral build files
+ios/Flutter/ephemeral/
